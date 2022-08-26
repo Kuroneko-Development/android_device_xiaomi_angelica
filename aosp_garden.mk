@@ -18,36 +18,36 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
-# Nusantara stuff
-TARGET_BOOT_ANIMATION_RES := 720
-TARGET_USES_BLUR := true
-NAD_BUILD_TYPE := OFFICIAL
-USE_AOSP_CLOCK := true
-TARGET_SUPPORTS_QUICK_TAP := true
-USE_PIXEL_CHARGING := true
-TARGET_SUPPORTS_GOOGLE_RECORDER := true
-IS_PHONE := true
-$(call inherit-product, vendor/nusantara/config/common_full_phone.mk)
+# GAPPS stuff
+#TARGET_BOOT_ANIMATION_RES := 720
+#TARGET_USES_BLUR := true
+#NAD_BUILD_TYPE := OFFICIAL
+#USE_AOSP_CLOCK := true
+#TARGET_SUPPORTS_QUICK_TAP := true
+#USE_PIXEL_CHARGING := true
+#TARGET_SUPPORTS_GOOGLE_RECORDER := true
+#IS_PHONE := true
+# $(call inherit-product, vendor/nusantara/config/common_full_phone.mk)
 
-# Inherit from garden device makefile
+# Inherit from angelica device makefile
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := nad_garden
-PRODUCT_DEVICE := garden
+PRODUCT_NAME := aosp_angelica
+PRODUCT_DEVICE := angelica
 PRODUCT_BRAND := Redmi
 PRODUCT_MANUFACTURER := xiaomi
 
 # Build info
 TARGET_VENDOR := xiaomi
-TARGET_VENDOR_PRODUCT_NAME := garden
+TARGET_VENDOR_PRODUCT_NAME := angelica
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="raven-user 12 SP2A.220405.004 8233519 release-keys"
+    PRIVATE_BUILD_DESC="raven-user 12 SQ3A.220605.009.B1 8650216 release-keys"
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := google/raven/raven:12/SP2A.220405.004/8233519:user/release-keys
+BUILD_FINGERPRINT := google/raven/raven:12/SQ3A.220605.009.B1/8650216:user/release-keys
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.fingerprint=$(BUILD_FINGERPRINT)

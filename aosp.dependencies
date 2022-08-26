@@ -1,0 +1,8 @@
+[
+  {
+	"remote": "github",
+	"repository": "https://github.com/Shironeko-Development/android_vendor_xiaomi_angelica",
+	"target_path": "vendor/xiaomi/angelica",
+	"branch": "twelve29"
+  }
+]

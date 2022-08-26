@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/xiaomi/garden
+DEVICE_PATH := device/xiaomi/angelica
 
 # Include Dev GSI Keys
 $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
@@ -23,7 +23,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Get non-open-source specific aspects
-$(call inherit-product, vendor/xiaomi/garden/garden-vendor.mk)
+$(call inherit-product, vendor/xiaomi/angelica/angelica-vendor.mk)
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -55,16 +55,13 @@ PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(DEVICE_PATH)/overlay \
-    $(DEVICE_PATH)/overlay-lineage \
-    $(DEVICE_PATH)/overlay-nad
+    $(DEVICE_PATH)/overlay-lineage
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    init.mt6762.rc \
     init.mt6765.rc \
     init.safailnet.rc \
     init.ago.rc \
-    fstab.mt6762 \
     fstab.mt6765
 
 # DT2W
@@ -80,7 +77,6 @@ PRODUCT_PACKAGES += \
 
 # Fstab
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/rootdir/etc/fstab.mt6762:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6762 \
     $(DEVICE_PATH)/rootdir/etc/fstab.mt6765:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6765
 
 # HIDL
@@ -105,7 +101,7 @@ PRODUCT_COPY_FILES += \
 
 # Light
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.garden
+    android.hardware.light@2.0-service.angelica
 
 # KPOC
 PRODUCT_PACKAGES += \
@@ -148,10 +144,6 @@ PRODUCT_PACKAGES += com.android.tethering.inprocess
 PRODUCT_PACKAGES += \
     WifiOverlay \
     TetheringConfigOverlay
-
-# Camera
-PRODUCT_PACKAGES += \
-    Graphene
 
 # SystemUI
 PRODUCT_PACKAGES += \

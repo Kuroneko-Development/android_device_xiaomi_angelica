@@ -106,7 +106,7 @@ void vendor_load_properties()
     property_override("dalvik.vm.heapminfree", heapminfree);
     property_override("dalvik.vm.heapmaxfree", heapmaxfree);
 
-    string model = "Redmi MT6765 G  Series";
+    string model = "Redmi 9C";
 
     // Override odm and vendor partitions' props
     string prop_partitions[] = { "odm.", "vendor." };
@@ -124,8 +124,8 @@ void vendor_load_properties()
     property_override(string("profiler.force_disable_err_rpt"), string("true"));
     property_override(string("profiler.force_disable_ulog"), string("true"));
 
-    // Override GPU Perf props
-    property_override(string("debug.composition.type"), string("hw"));
+    // Override GPU Perf props - Disabled for testing.
+    // property_override(string("debug.composition.type"), string("hw")); 
 
     // Override Debug props
     property_override(string("ro.secure"), string("0"));
@@ -156,14 +156,6 @@ void vendor_load_properties()
         property_override("ro.product.brand", "Redmi");
         property_override("ro.product.model", "Redmi 9");
         property_override("ro.product.device", "cattail");
-    } else if (hwname == "dandelion") {
-        property_override("ro.product.brand", "Redmi");
-        property_override("ro.product.device", "dandelion");
-        if (region == "India_9i") {
-            property_override("ro.product.model", "Redmi 9I");
-        } else {
-            property_override("ro.product.model", "Redmi 9A");
-        }
     }
 
 }

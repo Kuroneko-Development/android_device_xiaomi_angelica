@@ -15,9 +15,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-   $(LOCAL_DIR)/nad_garden.mk
+   $(LOCAL_DIR)/aosp_angelica.mk
 
 COMMON_LUNCH_CHOICES := \
-    nad_garden-userdebug \
-    nad_garden-eng \
-    nad_garden-user
+    aosp_angelica-userdebug \
+    aosp_angelica-eng \
+    aosp_angelica-user
