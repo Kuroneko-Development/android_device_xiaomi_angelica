@@ -9,16 +9,6 @@ on init
     # BPF
     setprop ro.kernel.ebpf.supported true
 
-    # boot time fs tune
-    write /sys/block/mmcblk0/queue/iostats 0
-    write /sys/block/mmcblk0/queue/scheduler cfq
-    write /sys/block/mmcblk0/queue/iosched/slice_idle 0
-    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
-    write /sys/block/mmcblk0/queue/nr_requests 256
-    write /sys/block/dm-0/queue/read_ahead_kb 2048
-    write /sys/block/dm-1/queue/read_ahead_kb 2048
-    write /sys/block/dm-2/queue/read_ahead_kb 2048
-
     # Disable vendor overlay
     mount none /vendor/lost+found /vendor/overlay bind
 
@@ -42,8 +32,8 @@ on charger
 
     write /proc/hps/enabled 0
     write /sys/devices/system/cpu/cpu0/online 1
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu1/online 0
+    write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 1
     write /sys/devices/system/cpu/cpu7/online 0
     write /sys/devices/system/cpu/cpu6/online 0
@@ -52,10 +42,10 @@ on charger
 
     write /sys/power/pm_async 0
 
-on property:persist.sys.garden.dt2w=0 && property:ro.boot.hwname=dandelion
+on property:persist.sys.garden.dt2w=0 && property:ro.boot.hwname=angelican
     exec /system/bin/sendevent /dev/input/event3 0 1 4
 
-on property:persist.sys.garden.dt2w=1 && property:ro.boot.hwname=dandelion
+on property:persist.sys.garden.dt2w=1 && property:ro.boot.hwname=angelican
     exec /system/bin/sendevent /dev/input/event3 0 1 5
 
 on property:persist.sys.garden.dt2w=0 && property:ro.boot.hwname=angelica
@@ -63,6 +53,18 @@ on property:persist.sys.garden.dt2w=0 && property:ro.boot.hwname=angelica
 
 on property:persist.sys.garden.dt2w=1 && property:ro.boot.hwname=angelica
     exec /system/bin/sendevent /dev/input/event4 0 1 5
+
+on property:persist.sys.garden.dt2w=0 && property:ro.boot.hwname=angelicain
+    exec /system/bin/sendevent /dev/input/event3 0 1 4
+
+on property:persist.sys.garden.dt2w=1 && property:ro.boot.hwname=angelicain
+    exec /system/bin/sendevent /dev/input/event3 0 1 5
+
+on property:persist.sys.garden.dt2w=0 && property:ro.boot.hwname=cattail
+    exec /system/bin/sendevent /dev/input/event3 0 1 4
+
+on property:persist.sys.garden.dt2w=1 && property:ro.boot.hwname=cattail
+    exec /system/bin/sendevent /dev/input/event3 0 1 5
 
 on post-fs
     # Disable OEM Lights
@@ -90,33 +92,12 @@ on property:sys.boot_completed=1
     exec - root -- /system/bin/sh -c "am broadcast -a android.intent.action.AIRPLANE_MODE --ez state false"
 
     # ZRAM
-    swapon_all /product/vendor_overlay/29/etc/fstab.mt6765
+    swapon_all /vendor/etc/fstab.enableswap
 
     # ZRAM setup
     write /sys/block/zram0/comp_algorithm lz4
     write /sys/block/zram0/max_comp_streams 8
     write /proc/sys/vm/page-cluster 0
-
-    # Runtime fs tuning for runtime performance
-    write /sys/block/mmcblk0/queue/iostats 1
-    write /sys/block/mmcblk0/queue/read_ahead_kb 512
-    write /sys/block/mmcblk0/queue/nr_requests 128
-    write /sys/block/dm-0/queue/read_ahead_kb 128
-    write /sys/block/dm-1/queue/read_ahead_kb 128
-    write /sys/block/dm-2/queue/read_ahead_kb 128
-
-    # Perf
-    write /sys/devices/system/cpu/cpufreq/performance/boost 1
-    write /dev/cpuset/foreground/boost/cpus 4-7
-    write /sys/devices/system/cpu/cpufreq/performance/above_hispeed_delay 0
-    write /sys/devices/system/cpu/cpufreq/performance/align_windows 1
-    write /dev/cpuset/foreground/cpus 0-3,4-7
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
-    write /sys/block/zram0/max_comp_streams 8
-    write /sys/devices/system/cpu/cpufreq/performance/go_hispeed_load 75
-    write /sys/devices/system/cpu/cpufreq/performance/max_freq_hysteresis 1
-    write /dev/cpuset/top-app/cpus 0-7
-    write /sys/module/lazyplug/parameters/nr_possible_cores 8
 
 # Logcat Services
 service boot_log /system/bin/logcat -b all -D -f /cache/boot_log_full.txt
