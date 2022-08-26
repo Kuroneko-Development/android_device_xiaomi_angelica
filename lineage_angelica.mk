@@ -16,7 +16,6 @@
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
 # GAPPS stuff
 #TARGET_BOOT_ANIMATION_RES := 720
@@ -27,7 +26,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 #USE_PIXEL_CHARGING := true
 #TARGET_SUPPORTS_GOOGLE_RECORDER := true
 #IS_PHONE := true
-# $(call inherit-product, vendor/nusantara/config/common_full_phone.mk)
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Inherit from angelica device makefile
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
