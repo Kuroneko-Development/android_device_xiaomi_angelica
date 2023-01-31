@@ -46,11 +46,14 @@ TARGET_SCREEN_WIDTH := 720
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/audio_policy_configuration.xml
 
-PRODUCT_PACKAGES += \
-    audio.a2dp.default
+#PRODUCT_PACKAGES += \
+#    audio.a2dp.default
 
 # Soong namespaces
-PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
+PRODUCT_SOONG_NAMESPACES += \
+    $(DEVICE_PATH) \
+    hardware/xiaomi \
+    hardware/mediatek
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -136,6 +139,14 @@ PRODUCT_PACKAGES += \
     PresencePolling \
     RcsService
 
+# Fingerprint
+PRODUCT_PACKAGES += \
+    android.hardware.biometrics.fingerprint@2.3-service.xiaomi
+
+# LiveDisplay
+PRODUCT_PACKAGES += \
+    vendor.lineage.livedisplay@2.0-service-mediatek
+
 # Do not spin up a separate process for the network stack, use an in-process APK.
 PRODUCT_PACKAGES += InProcessNetworkStack
 PRODUCT_PACKAGES += com.android.tethering.inprocess
@@ -151,8 +162,8 @@ PRODUCT_PACKAGES += \
     FPSInfoOverlay
 
 # IORap
-PRODUCT_PRODUCT_PROPERTIES += \
-     ro.iorapd.enable=true
+#PRODUCT_PRODUCT_PROPERTIES += \
+#     ro.iorapd.enable=true
 
 # Input
 PRODUCT_COPY_FILES += \

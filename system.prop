@@ -21,7 +21,7 @@ vendor.camera.aux.packageblacklist=org.telegram.messenger,com.microsoft.teams,co
 # Dex2oat
 pm.dexopt.ab-ota=speed-profile
 dalvik.vm.dex2oat-filter=speed
-dalvik.vm.image-dex2oat-filter=speed
+#dalvik.vm.image-dex2oat-filter=speed
 ro.sys.fw.dex2oat_thread_count=8
 dalvik.vm.boot-dex2oat-threads=8
 dalvik.vm.dex2oat-threads=4
@@ -141,7 +141,7 @@ power_supply.wakeup=enable
 ro.ril.disable.power.collapse=0
 
 # Perf
-ro.kernel.android.checkjni=0
+#ro.kernel.android.checkjni=0
 ro.vold.umsdirtyratio=20
 ro.min_pointer_dur=1
 pm.sleep_mode=1

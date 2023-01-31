@@ -15,9 +15,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-   $(LOCAL_DIR)/aosp_angelica.mk
+   $(LOCAL_DIR)/lineage_angelica.mk
 
 COMMON_LUNCH_CHOICES := \
-    aosp_angelica-userdebug \
-    aosp_angelica-eng \
-    aosp_angelica-user
+    lineage_angelica-userdebug \
+    lineage_angelica-eng \
+    lineage_angelica-user
