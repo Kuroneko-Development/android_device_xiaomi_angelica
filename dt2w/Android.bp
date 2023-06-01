@@ -16,7 +16,7 @@
  */
 
 android_app {
-    name: "DT2W-Service-Garden",
+    name: "DT2W-Service-angelican",
 
     srcs: ["src/**/*.java"],
     resource_dirs: ["res"],
@@ -30,13 +30,13 @@ android_app {
     },
 
     required: [
-        "privapp-permissions_org.lineageos.dt2w.garden"
+        "privapp-permissions_org.lineageos.dt2w.angelican"
     ]
 }
 
 prebuilt_etc {
-    name: "privapp-permissions_org.lineageos.dt2w.garden",
+    name: "privapp-permissions_org.lineageos.dt2w.angelican",
     sub_dir: "permissions",
-    src: "privapp-permissions_org.lineageos.dt2w.garden.xml",
+    src: "privapp-permissions_org.lineageos.dt2w.angelican.xml",
     filename_from_src: true
 }

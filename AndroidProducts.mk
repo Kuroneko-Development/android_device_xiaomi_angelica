@@ -15,9 +15,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-   $(LOCAL_DIR)/ancient_garden.mk
+   $(LOCAL_DIR)/ancient_angelican.mk
 
 COMMON_LUNCH_CHOICES := \
-    ancient_garden-userdebug \
-    ancient_garden-eng \
-    ancient_garden-user
+    ancient_angelican-userdebug \
+    ancient_angelican-eng \
+    ancient_angelican-user

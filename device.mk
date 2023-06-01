@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/xiaomi/garden
+DEVICE_PATH := device/xiaomi/angelican
 
 # Installs gsi keys into ramdisk, to boot a GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
@@ -23,7 +23,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Get non-open-source specific aspects
-$(call inherit-product, vendor/xiaomi/garden/garden-vendor.mk)
+$(call inherit-product, vendor/xiaomi/angelican/angelican-vendor.mk)
 
 # Treble
 PRODUCT_EXTRA_VNDK_VERSIONS := 29
@@ -67,7 +67,7 @@ PRODUCT_PACKAGES += \
 
 # DT2W
 PRODUCT_PACKAGES += \
-    DT2W-Service-Garden
+    DT2W-Service-angelican
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/dt2w/dt2w_event:$(TARGET_COPY_OUT_SYSTEM)/bin/dt2w_event
@@ -99,7 +99,7 @@ PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
 # Light
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.garden
+    android.hardware.light@2.0-service.angelican
 
 # KPOC
 PRODUCT_PACKAGES += \
